@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembuat Bokep by : satria</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #444;
+            margin-bottom: 30px;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .image-display {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: white;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        #randomImage {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+        
+        .info {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random Image Generator</h1>
+        
+        <div class="image-display">
+            <img id="randomImage" src="https://www.pixiv.net/en/" alt="Random image will appear here">
+        </div>
+        
+        <button class="btn" id="generateBtn">Generate Random Image</button>
+        
+        <div class="info">
+            <p id="imageInfo">Click the button to generate a random image</p>
+        </div>
+    </div>
+
+    <script>
+        // List of image URLs that you can modify
+        const imageUrls = [
+            "https://files.catbox.moe/xjpn5d.webp",
+            "https://files.catbox.moe/9mch1j.webp",
+            "https://files.catbox.moe/s0morm.webp",
+            "https://files.catbox.moe/l3wfiv.webp",
+            "https://files.catbox.moe/r6g41o.webp"
+        ];
+        
+        // DOM elements
+        const randomImage = document.getElementById('randomImage');
+        const generateBtn = document.getElementById('generateBtn');
+        const imageInfo = document.getElementById('imageInfo');
+        
+        // Generate random image function
+        function generateRandomImage() {
+            if (imageUrls.length === 0) {
+                imageInfo.textContent = "No images available";
+                return;
+            }
+            
+            const randomIndex = Math.floor(Math.random() * imageUrls.length);
+            const selectedImageUrl = imageUrls[randomIndex];
+            
+            randomImage.src = selectedImageUrl;
+            randomImage.alt = "Randomly selected image";
+            imageInfo.textContent = `Image ${randomIndex + 1} of ${imageUrls.length}`;
+        }
+        
+        // Event listener
+        generateBtn.addEventListener('click', generateRandomImage);
+        
+        // Generate first image on load
+        window.addEventListener('load', generateRandomImage);
+    </script>
+</body>
+</html>
